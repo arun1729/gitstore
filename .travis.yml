@@ -1,4 +1,4 @@
 language: java
-script: mvn cobertura:cobertura install deploy 
+script: mvn cobertura:cobertura install deploy --settings target/travis/settings.xml
 after_success:
   - bash <(curl -s https://codecov.io/bash)

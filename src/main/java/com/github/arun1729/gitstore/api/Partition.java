@@ -6,5 +6,11 @@ package com.github.arun1729.gitstore.api;
  *
  */
 public interface Partition {
+	
+	public void process();
+	
+	public String getRoot();
+	
+	public String getLeaf(); 
 
 }

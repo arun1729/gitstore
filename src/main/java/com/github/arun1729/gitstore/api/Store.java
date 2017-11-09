@@ -19,13 +19,28 @@ public interface Store {
 	public Store connect(String userName, String email) throws Exception;
 	
 	/**
+	 * Initialize local db without external connection.
+	 * @return
+	 * @throws Exception
+	 */
+	public Store init() throws Exception;
+	
+	/**
+	 * Connect to store with as user
+	 * @param username
+	 * @param email
+	 * @return
+	 */
+	public Store asUser(String username, String email);
+	
+	/**
 	 * Builder method to add remote Store credentials.
 	 * @param url
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	public Store withRemoteCredentials(String url, String username, String password);
+	public Store withRemoteCredential(String url, String username, String password);
 	
 	/**
 	 * List all records in the store.
@@ -36,11 +51,11 @@ public interface Store {
 	
 	/**
 	 * Get a specific record from the Store.
-	 * @param documentName
+	 * @param name
 	 * @return
 	 * @throws Exception
 	 */
-	public String get(String documentName) throws Exception;
+	public String get(String name) throws Exception;
 	
 	/**
 	 * Builder method to set a partitions.
@@ -82,7 +97,7 @@ public interface Store {
 	 * @param messagecd
 	 * @throws Exception
 	 */
-	public void dropPartition(Partition partition, String messagecd) throws Exception;
+	public void dropPartition(Partition partition, String message) throws Exception;
 	
 	/**
 	 * Delete partition and all its children from the store.

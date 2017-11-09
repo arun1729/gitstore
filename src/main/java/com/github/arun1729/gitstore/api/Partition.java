@@ -7,10 +7,8 @@ package com.github.arun1729.gitstore.api;
  */
 public interface Partition {
 	
-	public void process();
+	public String root();
 	
-	public String getRoot();
-	
-	public String getLeaf(); 
+	public String leaf(); 
 
 }

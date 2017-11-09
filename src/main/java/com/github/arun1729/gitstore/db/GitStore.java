@@ -134,7 +134,7 @@ public class GitStore implements Store {
 
 	@Override
 	public Store inPartition(Partition partition) throws Exception {
-		String part = getFullPath(partition.getLeaf());
+		String part = getFullPath(partition.leaf());
 		boolean isExistingPart = new File(part).exists();
 		if (isExistingPart) {
 			logger.info("This partition already exists! " + part);
@@ -201,7 +201,7 @@ public class GitStore implements Store {
 
 	@Override
 	public void dropPartition(Partition partition, String message) throws Exception {
-		String cPartition = getFullPath(partition.getLeaf());
+		String cPartition = getFullPath(partition.leaf());
 		if(cPartition.trim().length() < 2){
 			logger.error("Cannot delete this parition - partition name must be linger tha 2 charecters.");
 			throw new RuntimeException("Cannot delete this parition - partition name must be linger tha 2 charecters.");
@@ -215,7 +215,7 @@ public class GitStore implements Store {
 
 	@Override
 	public void dropPartitionTree(Partition partition, String message) throws Exception {
-		String cPartition = getFullPath(partition.getRoot());
+		String cPartition = getFullPath(partition.root());
 		if(cPartition.trim().length() < 2){
 			logger.error("Cannot delete this parition - partition name must be linger tha 2 charecters.");
 			throw new RuntimeException("Cannot delete this parition - partition name must be linger tha 2 charecters.");

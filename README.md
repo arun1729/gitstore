@@ -2,6 +2,15 @@
 
 A simple data store based on Git repository. Made purely for the fun of it!
 
+## Maven dependency
+```
+<dependency>
+  <groupId>com.github.arun1729</groupId>
+  <artifactId>gitstore</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 ## Example
 ```java
 GitStore gitStore = new GitStore("/tmp/test-db");

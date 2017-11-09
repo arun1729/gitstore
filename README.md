@@ -2,13 +2,26 @@
 
 A simple data store based on Git repository. Made purely for the fun of it!
 
-## Maven dependency
+## Maven dependency (only snaphot available currently.)
 ```
 <dependency>
   <groupId>com.github.arun1729</groupId>
   <artifactId>gitstore</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
+```
+### to include snapshot repo, add this to your repository list:
+```
+<repository>
+  <id>maven-snapshots</id>
+  <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+  <releases>
+    <enabled>false</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
 ```
 
 ## Example

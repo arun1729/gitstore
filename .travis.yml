@@ -1,4 +1,6 @@
 language: java
-script: mvn cobertura:cobertura install deploy --settings target/travis/settings.xml
+script: mvn cobertura:cobertura install
 after_success:
+  - echo "<settings><servers><server><id>ossrh</id><username>\${env.CI_DEPLOY_USERNAME}</username><password>\${env.CI_DEPLOY_PASSWORD}</password></server></servers></settings>" > ~/settings.xml
+  - mvn deploy --settings ~/settings.xml
   - bash <(curl -s https://codecov.io/bash)

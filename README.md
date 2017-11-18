@@ -1,6 +1,6 @@
 # GitStore [![Build Status](https://travis-ci.org/arun1729/gitstore.svg?branch=master)](https://travis-ci.org/arun1729/gitstore) [![codecov](https://codecov.io/gh/arun1729/gitstore/branch/master/graph/badge.svg)](https://codecov.io/gh/arun1729/gitstore)
 
-A simple data store based on Git repository. Get all the benefits of a Git repo such as revision history and tracking changes per user on a data store. This feature is especially useful for storing and managing configuration files that are accessed and modified by multiple users/applications.
+A simple data store based on Git repository. Get ***all the benefits of a Git repo** such as ***revision history and tracking changes per user*** on a data store. This feature is especially useful for **storing and managing configuration files*** that are accessed and modified by multiple users/applications.
 
 ## Example
 ```java
@@ -11,7 +11,7 @@ gitStore.connect("arun", "arun.mahendra@someemail.com");
 gitStore.put(filename, content, "inserted new document into git store.");
 ```
 
-## Check git log
+### Check git log
 ```bash
 $cd /tmp/test-db
 $git log
@@ -21,13 +21,13 @@ Date:   Thu Nov 9 12:18:54 2017 -0600
 
     inserted new document into git store.
 ```
-## Get content back
+### Get content back
 ```java
 gitStore.get(filename)
 A new document to store into GitStore
 ```
 
-## Storing data in partition
+### Storing data in partition
 ```
 String content = "Test test Test test";
 String filename = "test-doc";
@@ -36,12 +36,12 @@ gitStore.connect("arun", "arun.mahendra@someemail.com");
 gitStore.inPartition(partName).put(filename, content, "created for testing");
 ```
 
-## Retrieving data from partition
+### Retrieving data from partition
 ```
 String content = gitStore.inPartition(partName).get(filename);
 ```
 
-## Delete document and drop partition
+### Delete document and drop partition
 ```
 gitStore.inPartition(partName).delete(filename, "removing file.");
 gitStore.dropPartitionTree(partName, "dropping partition after testing.");

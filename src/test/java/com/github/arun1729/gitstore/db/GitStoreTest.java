@@ -10,6 +10,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.arun1729.gitstore.api.Partition;
+
 public class GitStoreTest {
 
 	/*DONOT CHANGE BASE_PATH, IT WILL BE DELETED AFTER THE TEST IS RUN.*/
@@ -30,11 +32,11 @@ public class GitStoreTest {
 	@Test
 	public void testPut() throws Exception {
 		String content = "A new document to store into GitStore";
-		String filename = "document-1";
+		String docname = "document-1";
 		gitStore.connect("arun", "arun.mahendra@someemail.com");
-		gitStore.put(filename, content, "inserted new document into git store.");
-		assertEquals(content, gitStore.get(filename));
-		gitStore.delete(filename, "deleting doc for testing.");
+		gitStore.put(docname, content, "inserted new document into git store.");
+		assertEquals(content, gitStore.get(docname));
+		gitStore.delete(docname, "deleting doc for testing.");
 	}
 	
 	@Test
@@ -50,13 +52,26 @@ public class GitStoreTest {
 	@Test
 	public void testPutGetPartition() throws Exception {
 		String content = "Test test Test test";
-		String filename = "test-doc";
-		DBPartition partName = new DBPartition("test/part/1");
+		String docname = "test.doc";
+		Partition partName = new DBPartition("test/part/1");
 		gitStore.connect("arun", "arun.mahendra@someemail.com");
-		gitStore.inPartition(partName).put(filename, content, "created for testing");
-		assertEquals(content, gitStore.inPartition(partName).get(filename));
-		gitStore.inPartition(partName).delete(filename, "remocing file after testing");
+		gitStore.inPartition(partName).put(docname, content, "created for testing");
+		assertEquals(content, gitStore.inPartition(partName).get(docname));
+		gitStore.inPartition(partName).delete(docname, "removing file after testing");
 		gitStore.dropPartitionTree(partName, "dropping partition after testing.");
+	}
+	
+	@Test
+	public void testLink() throws Exception {
+		String content = "this is a test document";
+		String docname = "test.doc";
+		Partition partition = new DBPartition("new/test");
+		gitStore.connect("arun", "arun.mahendra@someemail.com");
+		gitStore.inPartition(partition).put(docname, content, "created for testing link");
+		gitStore.inPartition(partition).link("testlink", docname, "created new link");
+		assertEquals(content, gitStore.inPartition(partition).get("testlink"));
+		gitStore.inPartition(partition).delete("testlink", "delete link");
+		gitStore.dropPartitionTree(partition, "dropped partition after testing.");
 	}
 	
 	@AfterClass

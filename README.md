@@ -1,14 +1,14 @@
 # GitStore [![Build Status](https://travis-ci.org/arun1729/gitstore.svg?branch=master)](https://travis-ci.org/arun1729/gitstore) [![codecov](https://codecov.io/gh/arun1729/gitstore/branch/master/graph/badge.svg)](https://codecov.io/gh/arun1729/gitstore)
 
-A simple data store based on Git repository. Get **all the benefits of a Git repo** such as **revision history and tracking changes per user** on a data store. This feature is especially useful for **storing and managing configuration files** that are accessed and modified by multiple users/applications.
+A simple key-value store based on Git repository. Get **all the benefits of a Git repo** such as **revision history and tracking changes per user** on a data store. This feature is especially useful for **storing and managing configuration files** that are accessed and modified by multiple users/applications.
 
 ## Example
 ```java
 GitStore gitStore = new GitStore("/tmp/test-db");
 String content = "A new document to store into GitStore";
-String filename = "document-1";
+String docname = "document-1";
 gitStore.connect("arun", "arun.mahendra@someemail.com");
-gitStore.put(filename, content, "inserted new document into git store.");
+gitStore.put(docname, content, "inserted new document into git store.");
 ```
 
 ### Check git log
@@ -23,27 +23,27 @@ Date:   Thu Nov 9 12:18:54 2017 -0600
 ```
 ### Get content back
 ```java
-gitStore.get(filename)
+gitStore.get(docname)
 A new document to store into GitStore
 ```
 
 ### Storing data in partition
 ```
 String content = "Test test Test test";
-String filename = "test-doc";
+String docname = "test-doc";
 DBPartition partName = new DBPartition("part/1");
 gitStore.connect("arun", "arun.mahendra@someemail.com");
-gitStore.inPartition(partName).put(filename, content, "created for testing");
+gitStore.inPartition(partName).put(docname, content, "created for testing");
 ```
 
 ### Retrieving data from partition
 ```
-String content = gitStore.inPartition(partName).get(filename);
+String content = gitStore.inPartition(partName).get(docname);
 ```
 
 ### Delete document and drop partition
 ```
-gitStore.inPartition(partName).delete(filename, "removing file.");
+gitStore.inPartition(partName).delete(docname, "removing file.");
 gitStore.dropPartitionTree(partName, "dropping partition after testing.");
 ```
 

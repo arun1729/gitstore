@@ -1,28 +1,6 @@
 # GitStore [![Build Status](https://travis-ci.org/arun1729/gitstore.svg?branch=master)](https://travis-ci.org/arun1729/gitstore) [![codecov](https://codecov.io/gh/arun1729/gitstore/branch/master/graph/badge.svg)](https://codecov.io/gh/arun1729/gitstore)
 
-A simple data store based on Git repository. Made purely for the fun of it!
-
-## Maven dependency (only snaphot available currently.)
-```
-<dependency>
-  <groupId>com.github.arun1729</groupId>
-  <artifactId>gitstore</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-</dependency>
-```
-### to include snapshot repo, add this to your repository list:
-```
-<repository>
-  <id>maven-snapshots</id>
-  <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-  <releases>
-    <enabled>false</enabled>
-  </releases>
-  <snapshots>
-    <enabled>true</enabled>
-  </snapshots>
-</repository>
-```
+A simple data store based on Git repository. Get all the benefits of a Git repo such as revision history and tracking changes per user on a data store. This feature is especially useful for storing and managing configuration files that are accessed and modified by multiple users/applications.
 
 ## Example
 ```java
@@ -47,4 +25,26 @@ Date:   Thu Nov 9 12:18:54 2017 -0600
 ```java
 gitStore.get(filename)
 A new document to store into GitStore
+```
+
+## Maven dependency (only snaphot available currently.)
+```
+<dependency>
+  <groupId>com.github.arun1729</groupId>
+  <artifactId>gitstore</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+### to include snapshot repo, add this to your repository list:
+```
+<repository>
+  <id>maven-snapshots</id>
+  <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+  <releases>
+    <enabled>false</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
 ```

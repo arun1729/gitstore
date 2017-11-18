@@ -27,6 +27,26 @@ gitStore.get(filename)
 A new document to store into GitStore
 ```
 
+## Storing data in partition
+```
+String content = "Test test Test test";
+String filename = "test-doc";
+DBPartition partName = new DBPartition("part/1");
+gitStore.connect("arun", "arun.mahendra@someemail.com");
+gitStore.inPartition(partName).put(filename, content, "created for testing");
+```
+
+## Retrieving data from partition
+```
+String content = gitStore.inPartition(partName).get(filename);
+```
+
+## Delete document and drop partition
+```
+gitStore.inPartition(partName).delete(filename, "removing file.");
+gitStore.dropPartitionTree(partName, "dropping partition after testing.");
+```
+
 ## Maven dependency (only snaphot available currently.)
 ```
 <dependency>

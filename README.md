@@ -1,6 +1,6 @@
 # GitStore [![Build Status](https://travis-ci.org/arun1729/gitstore.svg?branch=master)](https://travis-ci.org/arun1729/gitstore) [![codecov](https://codecov.io/gh/arun1729/gitstore/branch/master/graph/badge.svg)](https://codecov.io/gh/arun1729/gitstore)
 
-A simple key-value store based on Git repository. Get **all the benefits of a Git repo** such as **revision history and tracking changes per user** on a data store. This feature is especially useful for **storing and managing configuration files** that are accessed and modified by multiple users/applications.
+A simple key-value store based on Git repository. Get **all the benefits of a Git repo** such as **revision history and tracking changes per user** on a data store. These features are especially useful for **storing and managing configuration files** that are accessed and modified by multiple users/applications.
 
 ## Example
 ```java
